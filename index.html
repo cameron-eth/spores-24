@@ -4,22 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spores Order Form</title>
+    <link rel="stylesheet" href="audio.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-black">
-    <div>
-    <h1 class="text-white mb-10 flex justify-center text-6xl mt-10 p-10">SPORES</h1>
+
+  <div>
+    <h1 class="text-white mb-10 flex justify-center text-6xl  p-10">SPORES</h1>
+
     </div>
     <div class="mr-60 flex justify-center text-white">
  
-      <audio controls class="ml-60 ">
-        <source src="soph.mp3" type="audio/mp3">
-       
-      </audio>
+      <!-- <div class="flex justify-center mt-10">
+        <div class="inline-flex items-center bg-gray-100 rounded-lg p-4 shadow-lg">
+            <audio controls class="w-full">
+                <source src="soph.m4a" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div> -->
+
+    <div id="audioPlayer" class="custom-audio-player">
+      <button id="playPauseBtn">Play</button>
+      <input type="range" id="seekSlider" min="0" value="0" step="1">
+      <span id="currentTime">0:00</span> 
+      <div class="" id="nowPlaying"></div>
+      <img class="w-20 rounded-lg" src="cv.jpg">
+
+    </div>
+
+    <script src="audio.js"></script>
    </div>
 
+    
     <div class="flex justify-center mt-10">
-
         <iframe
         id="JotFormIFrame-240427922825155"
         title="Spores Order Form"
@@ -119,4 +137,5 @@
       <model-viewer src="spores.glb" alt="A 3D model" auto-rotate camera-controls></model-viewer>
 </body>
 </html>
+
 
