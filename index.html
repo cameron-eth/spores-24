@@ -9,29 +9,35 @@
 </head>
 <body class="bg-black">
 
-    <h1 class="text-white flex justify-center mt-20 text-8xl">SPORES</h1>
-    <div style="display: flex; justify-content: center; align-items: center; margin-top: 50px;">
-      <iframe
-        style="border-radius:12px"
-        src="https://open.spotify.com/embed/track/1GhXFdjJ9Y9b157a2bY04y?utm_source=generator"
-        width="30%"
-        height="100"
-        frameBorder="0"
-        allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
-        loading="lazy">
-      </iframe>
-    </div>
-    
+  <div>
+    <h1 class="text-white mb-10 flex justify-center text-6xl  p-10">SPORES</h1>
+
     </div>
     <div class="mr-60 flex justify-center text-white">
-   
+ 
+      <!-- <div class="flex justify-center mt-10">
+        <div class="inline-flex items-center bg-gray-100 rounded-lg p-4 shadow-lg">
+            <audio controls class="w-full">
+                <source src="soph.m4a" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div> -->
+
+    <div id="audioPlayer" class="custom-audio-player">
+      <button id="playPauseBtn">Play</button>
+      <input type="range" id="seekSlider" min="0" value="0" step="1">
+      <span id="currentTime">0:00</span> 
+      <div class="" id="nowPlaying"></div>
+      <img class="w-20 rounded-lg" src="cv.jpg">
+
+    </div>
 
     <script src="audio.js"></script>
    </div>
 
-   
-    <div class="flex justify-center">
+    
+    <div class="flex justify-center mt-10">
         <iframe
         id="JotFormIFrame-240427922825155"
         title="Spores Order Form"
