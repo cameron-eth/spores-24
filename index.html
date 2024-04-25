@@ -9,51 +9,40 @@
 </head>
 <body class="bg-black">
 
-  <div>
-    <h1 class="text-white mb-10 flex justify-center text-6xl  p-10">SPORES</h1>
-
+    <h1 class="text-white flex justify-center mt-20 text-8xl">SPORES</h1>
+    <div class=" flex justify-center mt-10 lg:ml-0">
+      <iframe
+          style="border-radius: 12px; width: 100%; max-width: 300px; height: 100px;"
+          src="https://open.spotify.com/embed/track/1GhXFdjJ9Y9b157a2bY04y?utm_source=generator"
+          frameBorder="0"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+          loading="lazy">
+      </iframe>
+    </div>
+    
     </div>
     <div class="mr-60 flex justify-center text-white">
- 
-      <!-- <div class="flex justify-center mt-10">
-        <div class="inline-flex items-center bg-gray-100 rounded-lg p-4 shadow-lg">
-            <audio controls class="w-full">
-                <source src="soph.m4a" type="audio/mp3">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
-    </div> -->
-
-    <div id="audioPlayer" class="custom-audio-player">
-      <button id="playPauseBtn">Play</button>
-      <input type="range" id="seekSlider" min="0" value="0" step="1">
-      <span id="currentTime">0:00</span> 
-      <div class="" id="nowPlaying"></div>
-      <img class="w-20 rounded-lg" src="cv.jpg">
-
-    </div>
+   
 
     <script src="audio.js"></script>
    </div>
 
-    
-    <div class="flex justify-center mt-10">
-     
-    <iframe
-      id="JotFormIFrame-240427922825155"
-      title="Order Form"
-      onload="window.parent.scrollTo(0,0)"
-      allowtransparency="true"
-      allow="geolocation; microphone; camera; fullscreen"
-      src="https://form.jotform.com/240427922825155"
-      frameborder="0"
-      style="min-width:100%;max-width:100%;height:539px;border:none;"
-      scrolling="no"
-    >
-    </iframe>
-    <script src='https://form.jotform.com/s/umd/latest/for-form-embed-handler.js'></script>
-    <script>window.jotformEmbedHandler("iframe[id='JotFormIFrame-240427922825155'", "https://form.jotform.com/")</script>
-    
+   
+    <div class="flex justify-center">
+        <iframe
+        id="JotFormIFrame-240427922825155"
+        title="Spores Order Form"
+        onload="window.parent.scrollTo(0,0)"
+        allowtransparency="true"
+        allowfullscreen="true"
+        allow="geolocation; microphone; camera"
+        src="https://form.jotform.com/240427922825155"
+        frameborder="0"
+        style="min-width:100%;max-width:100%;height:539px;border:none;"
+        scrolling="no"
+      >
+      </iframe>
       <script type="text/javascript">
       var ifr = document.getElementById("JotFormIFrame-240427922825155");
       if (ifr) {
