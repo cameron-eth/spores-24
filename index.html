@@ -8,30 +8,26 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-black">
+
+  <!-- Centered Image -->
   <div class="flex justify-center">
-    <img class="flex justify-center mt-10 h-40 mb-10" src="s.png" alt="Image description">
+    <img class="mt-10 h-40 mb-10" src="s.png" alt="Image description">
   </div>
-    <div class=" flex justify-center mt-10 lg:ml-0">
-      <iframe
-          style="border-radius: 12px; width: 100%; max-width: 300px; height: 100px;"
-          src="https://open.spotify.com/embed/track/1GhXFdjJ9Y9b157a2bY04y?utm_source=generator"
-          frameBorder="0"
-          allowfullscreen=""
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
-          loading="lazy">
-      </iframe>
-    </div>
-    
-    </div>
-    <div class="mr-60 flex justify-center text-white">
-   
 
-    <script src="audio.js"></script>
-   </div>
+  <!-- Spotify Embed -->
+  <div class="flex justify-center mt-10">
+    <iframe
+        style="border-radius: 12px; width: 100%; max-width: 300px; height: 100px;"
+        src="https://open.spotify.com/embed/track/1GhXFdjJ9Y9b157a2bY04y?utm_source=generator"
+        frameBorder="0"
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+        loading="lazy">
+    </iframe>
+  </div>
 
-   
-    <div class="flex justify-center">
-        <iframe
+  <!-- JotForm Iframe Embed -->
+  <div class="flex justify-center mt-10">
+    <iframe
         id="JotFormIFrame-240427922825155"
         title="Spores Order Form"
         onload="window.parent.scrollTo(0,0)"
@@ -41,10 +37,9 @@
         src="https://form.jotform.com/240427922825155"
         frameborder="0"
         style="min-width:100%;max-width:100%;height:539px;border:none;"
-        scrolling="no"
-      >
-      </iframe>
-      <script type="text/javascript">
+        scrolling="no">
+    </iframe>
+    <script>
       var ifr = document.getElementById("JotFormIFrame-240427922825155");
       if (ifr) {
         var src = ifr.src;
@@ -59,10 +54,11 @@
         iframeParams.push("isIframeEmbed=1");
         ifr.src = src + "?" + iframeParams.join('&');
       }
+
       window.handleIFrameMessage = function(e) {
         if (typeof e.data === 'object') { return; }
         var args = e.data.split(":");
-        if (args.length > 2) { iframe = document.getElementById("JotFormIFrame-" + args[(args.length - 1)]); } else { iframe = document.getElementById("JotFormIFrame"); }
+        var iframe = document.getElementById("JotFormIFrame-" + (args.length > 2 ? args[(args.length - 1)] : 'JotFormIFrame-240427922825155'));
         if (!iframe) { return; }
         switch (args[0]) {
           case "scrollIntoView":
@@ -70,63 +66,44 @@
             break;
           case "setHeight":
             iframe.style.height = args[1] + "px";
-            if (!isNaN(args[1]) && parseInt(iframe.style.minHeight) > parseInt(args[1])) {
-              iframe.style.minHeight = args[1] + "px";
-            }
-            break;
-          case "collapseErrorPage":
-            if (iframe.clientHeight > window.innerHeight) {
-              iframe.style.height = window.innerHeight + "px";
-            }
             break;
           case "reloadPage":
             window.location.reload();
             break;
           case "loadScript":
-            if( !window.isPermitted(e.origin, ['jotform.com', 'jotform.pro']) ) { break; }
-            var src = args[1];
-            if (args.length > 3) {
-                src = args[1] + ':' + args[2];
-            }
+            if (!window.isPermitted(e.origin, ['jotform.com', 'jotform.pro'])) { break; }
+            var src = args[1] + (args.length > 3 ? ':' + args[2] : '');
             var script = document.createElement('script');
             script.src = src;
-            script.type = 'text/javascript';
             document.body.appendChild(script);
             break;
-          case "exitFullscreen":
-            if      (window.document.exitFullscreen)        window.document.exitFullscreen();
-            else if (window.document.mozCancelFullScreen)   window.document.mozCancelFullScreen();
-            else if (window.document.mozCancelFullscreen)   window.document.mozCancelFullScreen();
-            else if (window.document.webkitExitFullscreen)  window.document.webkitExitFullscreen();
-            else if (window.document.msExitFullscreen)      window.document.msExitFullscreen();
-            break;
         }
-        var isJotForm = (e.origin.indexOf("jotform") > -1) ? true : false;
-        if(isJotForm && "contentWindow" in iframe && "postMessage" in iframe.contentWindow) {
-          var urls = {"docurl":encodeURIComponent(document.URL),"referrer":encodeURIComponent(document.referrer)};
-          iframe.contentWindow.postMessage(JSON.stringify({"type":"urls","value":urls}), "*");
+        var isJotForm = e.origin.indexOf("jotform") > -1;
+        if (isJotForm && "contentWindow" in iframe && "postMessage" in iframe.contentWindow) {
+          var urls = {"docurl": encodeURIComponent(document.URL), "referrer": encodeURIComponent(document.referrer)};
+          iframe.contentWindow.postMessage(JSON.stringify({"type": "urls", "value": urls}), "*");
         }
       };
+
       window.isPermitted = function(originUrl, whitelisted_domains) {
         var url = document.createElement('a');
         url.href = originUrl;
         var hostname = url.hostname;
-        var result = false;
-        if( typeof hostname !== 'undefined' ) {
-          whitelisted_domains.forEach(function(element) {
-              if( hostname.slice((-1 * element.length - 1)) === '.'.concat(element) ||  hostname === element ) {
-                  result = true;
-              }
-          });
-          return result;
-        }
+        return whitelisted_domains.some(domain => hostname.slice((-1 * domain.length - 1)) === '.'.concat(domain) || hostname === domain);
       };
+
       if (window.addEventListener) {
         window.addEventListener("message", handleIFrameMessage, false);
       } else if (window.attachEvent) {
         window.attachEvent("onmessage", handleIFrameMessage);
       }
-      </script>    </div>
-      <model-viewer src="spores.glb" alt="A 3D model" auto-rotate camera-controls></model-viewer>
+    </script>
+  </div>
+
+  <!-- 3D Model Viewer -->
+  <div class="flex justify-center mt-10">
+    <model-viewer src="spores.glb" alt="A 3D model" auto-rotate camera-controls></model-viewer>
+  </div>
+
 </body>
 </html>
